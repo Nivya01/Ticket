@@ -10,7 +10,7 @@ class Theatre(models.Model):
 
 class Screen(models.Model):
     screen_id = models.AutoField(primary_key=True)
-    screen_number = models.IntegerField()
+    screen_number = models.IntegerField(unique=True)
 
     def __str__ (self):
         return f"Screen {self.screen_number}"
@@ -25,7 +25,7 @@ class ShowDetail(models.Model):
             
 class Movie(models.Model):
     movie_id = models.AutoField(primary_key=True)
-    movie_name = models.CharField(max_length= 50)
+    movie_name = models.CharField(max_length= 50, unique=True)
     movie_genre = models.CharField(max_length=30)
     movie_language = models.CharField(max_length=10)
     theatre = models.ForeignKey(Theatre, on_delete=models.CASCADE)
